@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastro de tarefas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="nav nav-pills flex-column flex-sm-row">
+        <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="/create">Create</a>
+        <a class="flex-sm-fill text-sm-center nav-link" href="/list">List</a>
+    </nav>
+
+    <form method="POST" action="/create" th:object="${task}">
+        <input type="text" th:value="*{id}" name="id"/>
+        <div class="mb-3">
+            <label for="name" class="form-label">Nome da tarefa</label>
+            <input type="text" class="form-control" name="name" th:value="*{name}" id="name">
+        </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">Data da tarefa</label>
+            <input type="text" class="form-control" name="date" id="date" th:value="*{{date}}">
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+
+</body>
+</html>
